@@ -5,7 +5,7 @@ import com.itheima.edu.info.manager.service.TeacherService;
 
 import java.util.Scanner;
 
-public class TeacherController extends BaseTeacherController {
+public class OtherTeacherController extends BaseTeacherController {
     private Scanner sc = new Scanner(System.in);
 
     @Override
@@ -16,7 +16,11 @@ public class TeacherController extends BaseTeacherController {
         String age = sc.next();
         System.out.println("请输入老师生日");
         String birthday = sc.next();
-        Teacher tea = new Teacher(id, name, age, birthday);
+        Teacher tea = new Teacher();
+        tea.setId(id);
+        tea.setName(name);
+        tea.setAge(age);
+        tea.setBirthday(birthday);
         return tea;
     }
 }

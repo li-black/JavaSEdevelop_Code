@@ -6,6 +6,13 @@ import com.itheima.edu.info.manager.domain.Student;
 public class StudentDao {
     private static Student[] stus = new Student[5];
 
+    static {
+        Student stu1 = new Student("heima001", "张三", "23", "1999-11-11");
+        Student stu2 = new Student("heima002", "李四", "24", "2000-11-11");
+        stus[0] = stu1;
+        stus[1] = stu2;
+    }
+
     public boolean Studentadd(Student stu) {
         int index = -1;
         for (int i = 0; i < stus.length; i++) {
