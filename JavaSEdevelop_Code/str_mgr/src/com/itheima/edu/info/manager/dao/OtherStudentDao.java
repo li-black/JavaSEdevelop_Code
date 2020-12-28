@@ -3,51 +3,45 @@ package com.itheima.edu.info.manager.dao;
 
 import com.itheima.edu.info.manager.domain.Student;
 
-public class StudentDao implements BaseStudentDao {
-    private static Student[] stus = new Student[5];
+import java.util.ArrayList;
+
+public class OtherStudentDao implements BaseStudentDao {
+    private static ArrayList<Student> stus = new ArrayList<>();
 
     static {
         Student stu1 = new Student("heima001", "张三", "23", "1999-11-11");
         Student stu2 = new Student("heima002", "李四", "24", "2000-11-11");
-        stus[0] = stu1;
-        stus[1] = stu2;
+        stus.add(stu1);
+        stus.add(stu2);
     }
 
     public boolean Studentadd(Student stu) {
-        int index = -1;
-        for (int i = 0; i < stus.length; i++) {
-            Student student = stus[i];
-            if (student == null) {
-                index = i;
-                break;
-            }
-        }
-        if (index == -1) {
-            return false;
-        } else {
-            stus[index] = stu;
-            return true;
-        }
+        stus.add(stu);
+        return true;
     }
 
     public void deleteStudentById(String delId) {
         int index = getIndex(delId);
-        stus[index] = null;
+        stus.remove(index);
     }
 
     public void updateStudentById(String updateId, Student stu) {
         int index = getIndex(updateId);
-        stus[index] = stu;
+        stus.set(index, stu);
     }
 
     public Student[] findAllStudent() {
-        return stus;
+        Student[] students = new Student[stus.size()];
+        for (int i = 0; i < students.length; i++) {
+            students[i] = stus.get(i);
+        }
+        return students;
     }
 
     public int getIndex(String id) {
         int index = -1;
-        for (int i = 0; i < stus.length; i++) {
-            Student student = stus[i];
+        for (int i = 0; i < stus.size(); i++) {
+            Student student = stus.get(i);
             if (student != null && student.getId().equals(id)) {
                 index = i;
             }

@@ -1,10 +1,12 @@
 package com.itheima.edu.info.manager.service;
 
-import com.itheima.edu.info.manager.dao.TeacherDao;
+import com.itheima.edu.info.manager.dao.BaseTeacherDao;
+import com.itheima.edu.info.manager.dao.OtherTeacherDao;
 import com.itheima.edu.info.manager.domain.Teacher;
+import com.itheima.edu.info.manager.factory.TeacherDaoFactory;
 
 public class TeacherService {
-    private TeacherDao teacherDao = new TeacherDao();
+    private BaseTeacherDao teacherDao = TeacherDaoFactory.getTeacherDao();
 
     public boolean AddTeacher(Teacher tea) {
         return teacherDao.AddTeacher(tea);

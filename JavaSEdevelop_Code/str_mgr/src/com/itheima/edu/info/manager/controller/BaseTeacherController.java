@@ -9,7 +9,7 @@ public abstract class BaseTeacherController {
     private Scanner sc = new Scanner(System.in);
     private TeacherService teacherService = new TeacherService();
 
-    public void start() {
+    public final void start() {
         Teacherstart:
         while (true) {
             System.out.println("--------欢迎来到 <老师> 管理系统--------");
@@ -42,7 +42,7 @@ public abstract class BaseTeacherController {
         }
     }
 
-    private void AddTeacher() {
+    private final void AddTeacher() {
         String id;
         while (true) {
             System.out.println("请输入老师id");
@@ -63,7 +63,7 @@ public abstract class BaseTeacherController {
         }
     }
 
-    private void deleteTeacherById() {
+    private final void deleteTeacherById() {
         Teacher[] teas = teacherService.findAllTeas();
         if (teas == null) {
             System.out.println("查无信息，请添加后再删除！");
@@ -74,7 +74,7 @@ public abstract class BaseTeacherController {
         System.out.println("删除成功！");
     }
 
-    private void updateTeacher() {
+    private final void updateTeacher() {
         Teacher[] teas = teacherService.findAllTeas();
         if (teas == null) {
             System.out.println("查无信息，请添加后再修改");
@@ -86,7 +86,7 @@ public abstract class BaseTeacherController {
         System.out.println("修改成功！");
     }
 
-    private void findAllTeacher() {
+    private final void findAllTeacher() {
         Teacher[] allTeas = teacherService.findAllTeas();
         if (allTeas == null) {
             System.out.println("查无信息，请添加后再查询");
@@ -101,7 +101,7 @@ public abstract class BaseTeacherController {
         }
     }
 
-    public String inputTeacherId() {
+    public final String inputTeacherId() {
         String id;
         while (true) {
             System.out.println("请输入老师id");
