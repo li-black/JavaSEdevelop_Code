@@ -17,6 +17,9 @@ public class TestPolymorpic {
 
     public static void useanimal(Animal animal) {
         animal.eat();
+        if (animal instanceof Cat) {
+            Cat cat = (Cat) animal;
+        }
     }
 
     public static Animal getanimal(int type) {
