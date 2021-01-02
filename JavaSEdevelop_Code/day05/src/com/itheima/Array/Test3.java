@@ -1,6 +1,7 @@
 package com.itheima.Array;
 
 //数组的快速排序,最终实现
+//要从右边先查询不然可能或造成错误不如两小加两大3,1,2,5,9标准数为3的情况则会为5,1,2,3,9造成错误
 public class Test3 {
     public static void main(String[] args) {
         int[] arr = new int[]{6, 1, 2, 7, 9, 3, 4, 5, 10, 8};
