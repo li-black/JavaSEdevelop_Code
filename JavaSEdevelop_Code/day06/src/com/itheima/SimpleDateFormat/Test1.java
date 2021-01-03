@@ -12,7 +12,7 @@ public class Test1 {
         String s = sdf.format(d);
         System.out.println(s);
         System.out.println("----------");
-        String ss = "2048-08-09 11:11:";
+        String ss = "2048-08-09 11:11";
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date dd = sdf2.parse(ss);
         System.out.println(dd);
