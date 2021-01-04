@@ -21,6 +21,9 @@ public class Test2 {
                 System.out.println("请输入一个整数");
                 continue;
             } catch (AgeOutOfBoundsException e) {
+                System.out.println(e.getMessage());
+                System.out.println(e.toString());
+                e.printStackTrace();
                 System.out.println("请输入一个符合范围的年龄");
                 continue;
             }
