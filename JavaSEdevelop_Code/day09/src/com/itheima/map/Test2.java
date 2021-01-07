@@ -2,9 +2,7 @@ package com.itheima.map;
 //遍历集合的第一种方法
 //通过map.keySet()获取到所有的key然后通过遍历key在遍历的同时通过key获取到value来实现遍历
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Test2 {
     public static void main(String[] args) {
@@ -19,6 +17,21 @@ public class Test2 {
         for (String key : keys) {
             String s = map.get(key);
             System.out.println(key + "----------" + s);
+        }
+        Collection<String> values = map.values();
+        System.out.println(values);
+        Set<Map.Entry<String, String>> entries = map.entrySet();
+        System.out.println(entries);
+        System.out.println(map);
+        Iterator<Map.Entry<String, String>> iterator = entries.iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, String> next = iterator.next();
+            String key = next.getKey();
+            String value = next.getValue();
+            System.out.println(key + "---" + value);
+        }
+        for (String key : map.keySet()) {
+            System.out.println("key= " + key + " and value= " + map.get(key));
         }
     }
 }
