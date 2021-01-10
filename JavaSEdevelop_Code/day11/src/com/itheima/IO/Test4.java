@@ -17,10 +17,12 @@ public class Test4 {
         } catch (IOException e) {
             System.out.println("系统忙");
         } finally {
-            try {
-                inputStream.close();
-            } catch (IOException e) {
-                System.out.println("关闭错误！");
+            if (null != inputStream) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    System.out.println("关闭错误！");
+                }
             }
         }
     }
