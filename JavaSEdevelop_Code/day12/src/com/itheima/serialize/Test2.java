@@ -1,4 +1,5 @@
 package com.itheima.serialize;
+//将序列化后的文档反序列化为对象并输出
 
 import java.io.*;
 
