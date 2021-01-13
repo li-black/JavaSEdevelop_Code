@@ -1,6 +1,6 @@
 package com.itheima.Test;
 
-//买票案例
+//买票案例加锁之后
 public class Test1 {
     public static void main(String[] args) {
         Runnable runnable = new Sell();
@@ -15,10 +15,11 @@ public class Test1 {
 
 class Sell implements Runnable {
     private int tickets = 100;
+    Object lock = new Object();
 
     @Override
     public void run() {
-        while (true) {
+        while (true) synchronized (lock) {
             if (tickets <= 0) {
                 break;
             } else {
