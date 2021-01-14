@@ -7,7 +7,7 @@ public class Eater extends Thread {
     private ArrayBlockingQueue<String> arrayBlockingQueue;
     private Object obj;
 
-    public Eater(ArrayBlockingQueue<String> arrayBlockingQueue) {
+    public Eater(ArrayBlockingQueue<String> arrayBlockingQueue, Object obj) {
         this.arrayBlockingQueue = arrayBlockingQueue;
         this.obj = obj;
     }
@@ -27,11 +27,15 @@ public class Eater extends Thread {
         //3. 判断,共享数据是否结束. 结束
         //4. 判断,共享数据是否结束. 没有结束
         while (true) {
-            try {
-                String take = arrayBlockingQueue.take();
-                System.out.println("吃" + take);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            synchronized (obj) {
+                if (arrayBlockingQueue.size() == 1) {
+                    try {
+                        String take = arrayBlockingQueue.take();
+                        System.out.println("吃" + take);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
     }

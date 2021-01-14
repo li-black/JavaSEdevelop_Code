@@ -8,8 +8,9 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class Demo {
     public static void main(String[] args) {
         ArrayBlockingQueue<String> arrayBlockingQueue = new ArrayBlockingQueue<>(1);
-        Eater f = new Eater(arrayBlockingQueue);
-        Cooker c = new Cooker(arrayBlockingQueue);
+        Object obj = new Object();
+        Eater f = new Eater(arrayBlockingQueue, obj);
+        Cooker c = new Cooker(arrayBlockingQueue, obj);
         f.start();
         c.start();
     }
