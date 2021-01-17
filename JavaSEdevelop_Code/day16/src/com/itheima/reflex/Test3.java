@@ -1,17 +1,28 @@
 package com.itheima.reflex;
+//利用反射获取得构造方法创建对象
 
-//获取Class对象的三种方法
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 public class Test3 {
-    public static void main(String[] args) throws ClassNotFoundException {
-//        调用静态方法
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException {
         Class clazz = Class.forName("com.itheima.reflex.Student");
-        System.out.println(clazz);
-//        通过class属性
-        Class clazz1 = Student.class;
-        System.out.println(clazz1);
-//        利用对象的getClass方法来获取
-        Student s = new Student();
-        Class aClass = s.getClass();
-        System.out.println(aClass);
+//用获取的带参构造创建对象
+        Constructor constructor = clazz.getConstructor(int.class, String.class);
+        Student student = (Student) constructor.newInstance(23, "zhangsan");
+        System.out.println(student);
+//用获取的空参构造创建对象
+        Constructor constructor1 = clazz.getConstructor();
+        Student student1 = (Student) constructor1.newInstance();
+        System.out.println(student1);
+//用获取的空参和反射自带的方法创建对象
+        Student student2 = (Student) clazz.newInstance();
+        System.out.println(student2);
+//用获取的私有方法创建对象
+        Constructor declaredConstructor = clazz.getDeclaredConstructor(int.class);
+//私有构造要将其临时检查取消传入true
+        declaredConstructor.setAccessible(true);
+        Student student3 = (Student) declaredConstructor.newInstance(23);
+        System.out.println(student3);
     }
 }
